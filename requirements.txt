@@ -8,3 +8,4 @@ pandas
 requests
 streamlit
 python-dotenv
+tabulate
