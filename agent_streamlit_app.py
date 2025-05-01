@@ -1,6 +1,7 @@
 import os
 
 import pandas as pd
+import streamlit as st
 from dotenv import load_dotenv
 from langchain_experimental.agents.agent_toolkits import (
     create_pandas_dataframe_agent
@@ -18,10 +19,16 @@ print(df)
 
 agent = create_pandas_dataframe_agent(llm=model, df=df, verbose=True, allow_dangerous_code=True)
 
-result = agent.invoke("What is the Average Salary?")
+st.title("Database AI Agent with LangChain")
 
-print(result)
+st.write("### Dataset Preview")
+st.write(df.head())
 
+st.write("Ask A Question")
+question = st.text_input("Enter your question about the dataset", "Which grade has the highest average base salary, and compare")
 
-
-
+if st.button("Run Query"):
+    QUERY = question
+    res = agent.invoke(QUERY)
+    st.write("### Final Answer")
+    st.markdown(res["output"])
