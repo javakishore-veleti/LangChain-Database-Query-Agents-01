@@ -1,0 +1,10 @@
+openai
+langchain
+langchain-community
+langchain-core
+langchain-experimental
+langchain-openai
+pandas
+requests
+streamlit
+python-dotenv
